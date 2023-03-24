@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Lora', serif;
+  }
+
+  .background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+  }
+
+  .container {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .weather {
+    display: flex; 
+    align-items: center;
+    margin: 15px 0;
+    font-size: 1.5rem;
+  }
+
+
+  #location {
+    font-size: 3rem;
+    font-weight: 800;
+    font-style: italic;
+  }
+  .desc {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+  }
+
+  .circle {
+    background-color: black;
+    border-radius: 50px;
+    height: 15px;
+    width: 15px;
+    margin: 0 15px;
+  }
+
+  .bg-ex-animation {
+    background: url(image.jpg); /* Путь к картинке */
+    background-position: 0 0;
+    background-repeat: repeat;
+    animation: animated-bg 60s linear infinite;
+    width: 100%;
+    height: 350px;
+  }
+  @keyframes animated-bg {
+    from { background-position: 0 0; }
+    to { background-position: 0 1000px; }
+  }
+  html {
+    height: 100%;
+    background: linear-gradient(#68c2e9, #203c2b);
+    overflow: hidden;
+    --s: 0.6px 8px; /* размер капли воды*/
+    --c: rgba(204, 204, 204, 0.513);    /* цвет капель воды*/
+    --a: -7deg;   /* контролировать наклон струй*/
+    --w: 53px;    /* ширина pattern*/
+    --h: 55px;    /* высота pattern*/
+    --rad: radial-gradient(var(--s), var(--c) 100%, transparent 100%);
+    --spd: 0.5s;
+  }
+  
+  html:before,
+  html:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: -20%;
+    left: -20%;
+    height: calc(100% + var(--h) + 10px); /* should be bigger than (100% + var(--h))*/
+    background: 
+      var(--rad) -12px 3px, 
+      var(--rad) 17px 0, 
+      var(--rad) 6px 12px, 
+      var(--rad) 24px 23px, 
+      var(--rad) 39px 30px, 
+      var(--rad) 5px 43px;
+    background-size: var(--w) var(--h);
+    animation: rain var(--spd) linear infinite;
+    transform: skew(var(--a));
+  }
+  
+  html:after {
+    --h: 70px;
+    --w: 61px;
+  }
+  
+  @keyframes rain {
+    to {
+      transform: skew(var(--a)) translateY(var(--h));
+      /* Same as the height of the background-size */
+    }
+  }
+  /* "--w:68px; --a:-7deg; --s:1px 1px; --h:55px;" */
+
+  input { opacity: .4; }  
